@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container p-5 bg-light">
+        <div class="row d-flex justify-content-around">
+            <div class="col-5">
+                <h1 class='mb-4'>Title: {{book.title}}</h1>
+                <h3>Favorited By:</h3>
+                {% for author in book.authors: %}
+                <p>{{author.name}}</p>
+                {% endfor %}
+                <a class='btn btn-primary mt-3' href='/authors'>Home</a>
+            </div>
+            <div class="col-5">
+                <h1>Add Book's Favorite</h1>
+                <form action='/books/{{book.id}}/favorite' method="POST">
+                    <label class='form-label' for='author_id'>Author:</label>
+                    <select class='form-select' name='author_id' id='author_id'>
+                        {% for author in all_authors: %}
+                        <option value="{{author.id}}">{{author.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <input class="btn btn-success mt-3" type="submit" value="Add">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
