@@ -16,13 +16,6 @@ def show_one_book(id):
     all_authors=author.Author.get_all()
     return render_template('show_book.html', book=current_book, all_authors=all_authors)
 
-# @app.route('/books/<int:id>')
-# def show_one_book(id):
-#     data = {
-#         "id":id
-#     }
-#     return render_template('show_book.html',book=Book.get_one(data),unfavorited_authors=author.Author.unfavorited_authors(data))
-                           
 @app.route('/books/<int:id>/favorite', methods=['POST'])
 def add_favorite_author(id):
     data={

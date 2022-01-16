@@ -53,12 +53,12 @@ class Book:
             "VALUES (%(book_id)s, %(author_id)s);"
         connectToMySQL(cls.db).query_db(query, data)
         
-    @classmethod
-    def unfavorited_books(cls,data):
-        query = "SELECT * FROM books WHERE books.id NOT IN ( SELECT book_id FROM favorites WHERE author_id = %(id)s );"
-        results = connectToMySQL(cls.db).query_db(query,data)
-        books = []
-        for row in results:
-            books.append(cls(row))
-        print(books)
-        return books
+    # @classmethod
+    # def unfavorited_books(cls,data):
+    #     query = "SELECT * FROM books WHERE books.id NOT IN ( SELECT book_id FROM favorites WHERE author_id = %(id)s );"
+    #     results = connectToMySQL(cls.db).query_db(query,data)
+    #     books = []
+    #     for row in results:
+    #         books.append(cls(row))
+    #     print(books)
+    #     return books
